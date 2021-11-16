@@ -1,12 +1,19 @@
 package dev.fernanda.dscatalog.entities;
 
+
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "category")
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
 
     public Category() {
@@ -38,7 +45,7 @@ public class Category implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return id == category.id;
+        return id.equals(category.id);
     }
 
     @Override
